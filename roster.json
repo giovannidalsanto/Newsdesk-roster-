@@ -1,0 +1,733 @@
+{
+ "weekStart": "2026-06-22",
+ "roles": [
+  "MMC Frontpage",
+  "EC Hotline",
+  "Octopus – Daily",
+  "Octopus – Week Ahead",
+  "Events",
+  "Mission Coordination",
+  "Watch Party",
+  "TXM with Francis",
+  "Pre-production",
+  "Production",
+  "Troubleshooting",
+  "Planning",
+  "Agencies",
+  "INS Follow-up"
+ ],
+ "people": [
+  "Giovanni",
+  "Zoe",
+  "Claudio"
+ ],
+ "weekdayBands": [
+  "Early",
+  "Morning",
+  "Lunch",
+  "Afternoon",
+  "Late"
+ ],
+ "generatedAt": "2026-06-18T11:34:00+00:00",
+ "days": [
+  {
+   "day": "Mon",
+   "date": "2026-06-22",
+   "weekend": false,
+   "bands": [
+    "Early",
+    "Morning",
+    "Lunch",
+    "Afternoon",
+    "Late"
+   ],
+   "status": {
+    "Giovanni": "Working",
+    "Zoe": "Working",
+    "Claudio": "Working"
+   },
+   "grid": {
+    "MMC Frontpage": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "EC Hotline": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Octopus – Daily": {
+     "Early": null,
+     "Morning": "Giovanni",
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": null
+    },
+    "Octopus – Week Ahead": {
+     "Early": null,
+     "Morning": "Giovanni",
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": null
+    },
+    "Events": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Mission Coordination": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Watch Party": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": null
+    },
+    "TXM with Francis": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Pre-production": {
+     "Early": null,
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Troubleshooting": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": null
+    },
+    "Planning": {
+     "Early": null,
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": null
+    },
+    "Agencies": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": "Giovanni"
+    },
+    "INS Follow-up": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": null
+    }
+   }
+  },
+  {
+   "day": "Tue",
+   "date": "2026-06-23",
+   "weekend": false,
+   "bands": [
+    "Early",
+    "Morning",
+    "Lunch",
+    "Afternoon",
+    "Late"
+   ],
+   "status": {
+    "Giovanni": "Working",
+    "Zoe": "Working",
+    "Claudio": "Working"
+   },
+   "grid": {
+    "MMC Frontpage": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "EC Hotline": {
+     "Early": "Zoe",
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Octopus – Daily": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Octopus – Week Ahead": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Events": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Mission Coordination": {
+     "Early": "Zoe",
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Watch Party": {
+     "Early": "Zoe",
+     "Morning": "Giovanni",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "TXM with Francis": {
+     "Early": "Zoe",
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Pre-production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Troubleshooting": {
+     "Early": null,
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": "Giovanni"
+    },
+    "Planning": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Agencies": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": "Giovanni"
+    },
+    "INS Follow-up": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    }
+   }
+  },
+  {
+   "day": "Wed",
+   "date": "2026-06-24",
+   "weekend": false,
+   "bands": [
+    "Early",
+    "Morning",
+    "Lunch",
+    "Afternoon",
+    "Late"
+   ],
+   "status": {
+    "Giovanni": "Working",
+    "Zoe": "Working",
+    "Claudio": "Working"
+   },
+   "grid": {
+    "MMC Frontpage": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "EC Hotline": {
+     "Early": null,
+     "Morning": "Giovanni",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Octopus – Daily": {
+     "Early": null,
+     "Morning": "Giovanni",
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": "Zoe"
+    },
+    "Octopus – Week Ahead": {
+     "Early": null,
+     "Morning": "Giovanni",
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": "Zoe"
+    },
+    "Events": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Mission Coordination": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Watch Party": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "TXM with Francis": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Pre-production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Troubleshooting": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Planning": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Agencies": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "INS Follow-up": {
+     "Early": null,
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    }
+   }
+  },
+  {
+   "day": "Thu",
+   "date": "2026-06-25",
+   "weekend": false,
+   "bands": [
+    "Early",
+    "Morning",
+    "Lunch",
+    "Afternoon",
+    "Late"
+   ],
+   "status": {
+    "Giovanni": "Working",
+    "Zoe": "Working",
+    "Claudio": "Working"
+   },
+   "grid": {
+    "MMC Frontpage": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "EC Hotline": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": "Giovanni"
+    },
+    "Octopus – Daily": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": null
+    },
+    "Octopus – Week Ahead": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": null
+    },
+    "Events": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": null
+    },
+    "Mission Coordination": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": "Giovanni"
+    },
+    "Watch Party": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "TXM with Francis": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Pre-production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Troubleshooting": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": "Giovanni"
+    },
+    "Planning": {
+     "Early": null,
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": null
+    },
+    "Agencies": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": "Giovanni"
+    },
+    "INS Follow-up": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": null
+    }
+   }
+  },
+  {
+   "day": "Fri",
+   "date": "2026-06-26",
+   "weekend": false,
+   "bands": [
+    "Early",
+    "Morning",
+    "Lunch",
+    "Afternoon",
+    "Late"
+   ],
+   "status": {
+    "Giovanni": "Working",
+    "Zoe": "Working",
+    "Claudio": "Working"
+   },
+   "grid": {
+    "MMC Frontpage": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "EC Hotline": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Octopus – Daily": {
+     "Early": null,
+     "Morning": "Giovanni",
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": null
+    },
+    "Octopus – Week Ahead": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Events": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Mission Coordination": {
+     "Early": null,
+     "Morning": "Giovanni",
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": "Zoe"
+    },
+    "Watch Party": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "TXM with Francis": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Pre-production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Production": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    },
+    "Troubleshooting": {
+     "Early": null,
+     "Morning": "Claudio",
+     "Lunch": null,
+     "Afternoon": "Zoe",
+     "Late": null
+    },
+    "Planning": {
+     "Early": null,
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": "Giovanni",
+     "Late": null
+    },
+    "Agencies": {
+     "Early": null,
+     "Morning": null,
+     "Lunch": "Giovanni",
+     "Afternoon": "Giovanni",
+     "Late": "Giovanni"
+    },
+    "INS Follow-up": {
+     "Early": null,
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": null,
+     "Late": null
+    }
+   }
+  },
+  {
+   "day": "Sat",
+   "date": "2026-06-27",
+   "weekend": true,
+   "bands": [
+    "All day"
+   ],
+   "status": {
+    "Giovanni": "Working",
+    "Zoe": "Working",
+    "Claudio": "Working"
+   },
+   "grid": {
+    "MMC Frontpage": {
+     "All day": null
+    },
+    "EC Hotline": {
+     "All day": null
+    },
+    "Octopus – Daily": {
+     "All day": null
+    },
+    "Octopus – Week Ahead": {
+     "All day": null
+    },
+    "Events": {
+     "All day": null
+    },
+    "Mission Coordination": {
+     "All day": null
+    },
+    "Watch Party": {
+     "All day": null
+    },
+    "TXM with Francis": {
+     "All day": null
+    },
+    "Pre-production": {
+     "All day": null
+    },
+    "Production": {
+     "All day": null
+    },
+    "Troubleshooting": {
+     "All day": null
+    },
+    "Planning": {
+     "All day": null
+    },
+    "Agencies": {
+     "All day": null
+    },
+    "INS Follow-up": {
+     "All day": null
+    }
+   }
+  },
+  {
+   "day": "Sun",
+   "date": "2026-06-28",
+   "weekend": true,
+   "bands": [
+    "All day"
+   ],
+   "status": {
+    "Giovanni": "Working",
+    "Zoe": "Working",
+    "Claudio": "Working"
+   },
+   "grid": {
+    "MMC Frontpage": {
+     "All day": null
+    },
+    "EC Hotline": {
+     "All day": null
+    },
+    "Octopus – Daily": {
+     "All day": null
+    },
+    "Octopus – Week Ahead": {
+     "All day": null
+    },
+    "Events": {
+     "All day": null
+    },
+    "Mission Coordination": {
+     "All day": "Zoe"
+    },
+    "Watch Party": {
+     "All day": null
+    },
+    "TXM with Francis": {
+     "All day": null
+    },
+    "Pre-production": {
+     "All day": null
+    },
+    "Production": {
+     "All day": null
+    },
+    "Troubleshooting": {
+     "All day": null
+    },
+    "Planning": {
+     "All day": null
+    },
+    "Agencies": {
+     "All day": null
+    },
+    "INS Follow-up": {
+     "All day": null
+    }
+   }
+  }
+ ]
+}

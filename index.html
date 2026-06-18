@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000099">
+<title>Newsdesk Roster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F6FB; --card:#FFFFFF; --line:#D9DEEC; --line2:#E8ECF5;
+  --ink:#0B1437; --ink2:#3D456B; --faint:#9AA1BE;
+  --epblue:#000099; --epblue-soft:#E5E5F5; --gold:#FFCC00;
+  --giovanni:#3B1E8F; --zoe:#0E8C86; --claudio:#B5701B;
+  --giovanni-bg:#EBE6F7; --zoe-bg:#DEF1EF; --claudio-bg:#F6ECDC;
+  --off:#6B7396; --off-bg:#ECEEF5; --mission:#9B2FB0; --mission-bg:#F6E6F8;
+  /* band colours — shared with the spreadsheet */
+  --bEarly:#8C77C8; --bEarly-bg:#EFEAF8; --bMorning:#C79A1E; --bMorning-bg:#FBF3D8;
+  --bLunch:#C97B3C; --bLunch-bg:#FBE8D8; --bAfternoon:#3F63C4; --bAfternoon-bg:#E4EAFB;
+  --bLate:#5C8A5C; --bLate-bg:#E3EFE3; --bAllday:#6B7396; --bAllday-bg:#EEF0F6;
+  --mono:"IBM Plex Mono",ui-monospace,monospace; --sans:"Archivo",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.4;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:20;background:rgba(244,246,251,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);border-top:3px solid var(--epblue);padding:11px 16px 9px}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brandwrap{display:flex;flex-direction:column;gap:1px}
+h1{font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--epblue)}
+.weekof{font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.viewtog{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--card);flex-shrink:0}
+.viewtog button{font-family:var(--mono);font-size:11px;padding:5px 11px;background:transparent;color:var(--ink2);border:none;cursor:pointer;letter-spacing:.05em}
+.viewtog button[aria-pressed="true"]{background:var(--epblue);color:#fff}
+.viewtog button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.pdfbtn{font-family:var(--mono);font-size:11px;padding:6px 12px;border:1px solid var(--epblue);background:var(--card);color:var(--epblue);border-radius:7px;cursor:pointer;letter-spacing:.05em;font-weight:600}
+.pdfbtn:hover{background:var(--epblue);color:#fff}
+.pdfbtn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.subbar{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:9px}
+.subtog{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card)}
+.subtog button{font-family:var(--mono);font-size:10.5px;padding:4px 11px;background:transparent;color:var(--ink2);border:none;cursor:pointer}
+.subtog button[aria-pressed="true"]{background:var(--epblue-soft);color:var(--epblue);font-weight:600}
+.daynav{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:9px}
+.daynav button{background:var(--card);border:1px solid var(--line);border-radius:6px;color:var(--ink2);font-family:var(--mono);font-size:14px;width:30px;height:28px;cursor:pointer;line-height:1}
+.daynav button:disabled{opacity:.35}
+.daynav .dl{font-family:var(--mono);font-size:13px;color:var(--ink);min-width:178px;text-align:center;font-weight:600}
+.daynav .dl.today{color:var(--epblue)}
+.daynav .dl.today::after{content:" ●";color:var(--gold);font-size:10px}
+main{max-width:1100px;margin:0 auto;padding:14px 16px 70px}
+
+/* band colour helpers */
+.bz-Early{--bc:var(--bEarly);--bcbg:var(--bEarly-bg)} .bz-Morning{--bc:var(--bMorning);--bcbg:var(--bMorning-bg)}
+.bz-Lunch{--bc:var(--bLunch);--bcbg:var(--bLunch-bg)} .bz-Afternoon{--bc:var(--bAfternoon);--bcbg:var(--bAfternoon-bg)}
+.bz-Late{--bc:var(--bLate);--bcbg:var(--bLate-bg)} .bz-Allday{--bc:var(--bAllday);--bcbg:var(--bAllday-bg)}
+
+/* CARDS */
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin-bottom:13px;box-shadow:0 1px 2px rgba(11,20,55,.04)}
+.pcard.away{opacity:.72}
+.pcard-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.pavatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff}
+.pname{font-size:17px;font-weight:800}
+.pcount{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.pslot{display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line2)}
+.pslot:first-of-type{border-top:none}
+.pslot-band{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;width:74px;flex-shrink:0;padding-top:4px;color:var(--bc);font-weight:600}
+.pslot-band::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--bc);margin-right:5px;vertical-align:1px}
+.pslot-roles{display:flex;flex-wrap:wrap;gap:5px}
+.rtag{font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:7px;background:var(--bcbg);border:1px solid transparent;color:var(--ink)}
+.statusline{font-family:var(--mono);font-size:12px;font-weight:600;padding:4px 10px;border-radius:7px;display:inline-block}
+
+/* TIMELINE */
+.tlwrap{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 14px 12px;overflow-x:auto}
+.tlgrid{position:relative;min-width:540px}
+.tlhead{display:grid;grid-template-columns:104px 1fr;margin-bottom:6px}
+.tlbands{display:grid;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;text-transform:uppercase}
+.tlbands span{text-align:center;padding-bottom:6px;font-weight:600;color:var(--bc)}
+.tlrow{display:grid;grid-template-columns:104px 1fr;border-top:1px solid var(--line2);min-height:34px}
+.tlrole{font-size:11.5px;font-weight:600;color:var(--ink2);padding:7px 8px 7px 0;display:flex;align-items:center}
+.tllane{position:relative;display:grid}
+.tllane .gl{border-left:1px solid var(--line2)}
+.tlbar{position:absolute;top:5px;bottom:5px;border-radius:6px;display:flex;align-items:center;padding:0 8px;font-size:11px;font-weight:700;color:#fff;overflow:hidden;white-space:nowrap;box-shadow:inset 0 0 0 2px var(--bc)}
+
+/* WEEK */
+.wkwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px}
+table.week{border-collapse:collapse;width:100%;min-width:720px;background:var(--card)}
+table.week th,table.week td{border:1px solid var(--line);padding:0;text-align:center;vertical-align:middle}
+table.week thead th{position:sticky;top:0;background:var(--epblue);color:#fff;font-family:var(--mono);font-size:11px;font-weight:600;padding:6px 4px;line-height:1.25}
+table.week thead th .dt{display:block;font-size:9px;opacity:.8;font-weight:400}
+table.week thead th.today{color:var(--gold)}
+table.week td.rolecell,table.week th.rolecell{position:sticky;left:0;z-index:2;background:#F0F2FA;text-align:left;padding:6px 9px;font-size:12px;font-weight:700;min-width:122px;color:var(--ink)}
+table.week thead th.rolecell{z-index:3;background:var(--epblue);color:#fff}
+.cellnames{display:flex;flex-direction:column;gap:2px;padding:4px 3px;min-height:30px}
+.chip{font-family:var(--mono);font-size:10px;font-weight:600;border-radius:4px;padding:2px 4px 2px 5px;line-height:1.3;border-left:3px solid var(--bc)}
+.bandtag{font-family:var(--mono);font-size:8px;opacity:.65;letter-spacing:.04em}
+
+.namecol-Giovanni{color:var(--giovanni)} .namecol-Zoe{color:var(--zoe)} .namecol-Claudio{color:var(--claudio)}
+.chip-Giovanni{background:var(--giovanni-bg);color:var(--giovanni)} .chip-Zoe{background:var(--zoe-bg);color:var(--zoe)} .chip-Claudio{background:var(--claudio-bg);color:var(--claudio)}
+.chip-OFF{background:var(--off-bg);color:var(--off)} .chip-ONMISSION{background:var(--mission-bg);color:var(--mission)}
+.soft-OFF{background:var(--off-bg);color:var(--off)} .soft-ONMISSION{background:var(--mission-bg);color:var(--mission)}
+.bg-Giovanni{background:var(--giovanni)} .bg-Zoe{background:var(--zoe)} .bg-Claudio{background:var(--claudio)}
+
+.legend{display:flex;flex-wrap:wrap;gap:9px 13px;margin:11px 0 2px;font-family:var(--mono);font-size:10px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.ldot{width:9px;height:9px;border-radius:2px;display:inline-block}
+.tally{margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
+.tally-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+.tally-row{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.tally-row .nm{font-family:var(--mono);font-size:12px;width:80px;color:var(--ink2)}
+.bar{height:14px;border-radius:3px;flex:1;background:var(--line2)}
+.bar-fill{height:100%;border-radius:3px}
+.tally-row .ct{font-family:var(--mono);font-size:11px;color:var(--ink2);width:34px;text-align:right}
+footer{max-width:1100px;margin:0 auto;padding:0 16px 36px;font-family:var(--mono);font-size:10px;color:var(--faint);line-height:1.5}
+
+@media print{
+  @page{size:A4 landscape;margin:7mm}
+  body{background:#fff}
+  header{display:none!important}
+  footer{display:none!important}
+  #dayview{display:none!important}
+  #weekview{display:block!important}
+  .tally{display:none!important}
+  header{position:static;border-top:none;padding:0 0 6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  h1{color:#000099!important}
+  main{padding:0;max-width:none}
+  .wkwrap{overflow:visible;margin:0;padding:0}
+  table.week{min-width:0;width:100%;font-size:8.5px;table-layout:fixed}
+  table.week thead th{background:#000099!important;color:#fff!important;padding:3px 2px}
+  table.week td.rolecell{background:#F0F2FA!important;padding:2px 6px;font-size:9px}
+  table.week .cellnames{min-height:0;gap:1px;padding:2px}
+  table.week .chip{font-size:8px;padding:1px 3px}
+  table.week td,table.week th{line-height:1.15}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .printtitle{display:block!important;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:#000099;margin-bottom:4px}
+}
+.printtitle{display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="brandrow">
+    <div class="brandwrap"><h1>Newsdesk Roster</h1><span class="weekof" id="weekof"></span></div>
+    <div class="viewtog" role="group" aria-label="View">
+      <button id="vDay" aria-pressed="true">DAY</button>
+      <button id="vWeek" aria-pressed="false">WEEK</button>
+    </div>
+    <button id="pdfBtn" class="pdfbtn" title="Export the weekly board as PDF">EXPORT PDF</button>
+  </div>
+  <div class="subbar" id="subbar">
+    <div class="subtog" role="group" aria-label="Daily layout">
+      <button id="lCards" aria-pressed="true">CARDS</button>
+      <button id="lTimeline" aria-pressed="false">TIMELINE</button>
+    </div>
+  </div>
+  <div class="daynav" id="daynav">
+    <button id="prev" aria-label="Previous day">‹</button>
+    <span class="dl" id="dl"></span>
+    <button id="next" aria-label="Next day">›</button>
+  </div>
+</header>
+<main>
+  <div class="printtitle" id="printtitle"></div>
+  <div id="dayview"></div>
+  <div id="weekview" style="display:none"></div>
+  <div class="tally" id="tally"></div>
+</main>
+<footer id="foot"></footer>
+<script>
+const DATA = {"weekStart": "2026-06-22", "roles": ["MMC Frontpage", "EC Hotline", "Octopus – Daily", "Octopus – Week Ahead", "Events", "Mission Coordination", "Watch Party", "TXM with Francis", "Pre-production", "Production", "Troubleshooting", "Planning", "Agencies", "INS Follow-up"], "people": ["Giovanni", "Zoe", "Claudio"], "weekdayBands": ["Early", "Morning", "Lunch", "Afternoon", "Late"], "generatedAt": "2026-06-18T11:34:00+00:00", "days": [{"day": "Mon", "date": "2026-06-22", "weekend": false, "bands": ["Early", "Morning", "Lunch", "Afternoon", "Late"], "status": {"Giovanni": "Working", "Zoe": "Working", "Claudio": "Working"}, "grid": {"MMC Frontpage": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "EC Hotline": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Octopus – Daily": {"Early": null, "Morning": "Giovanni", "Lunch": null, "Afternoon": "Giovanni", "Late": null}, "Octopus – Week Ahead": {"Early": null, "Morning": "Giovanni", "Lunch": null, "Afternoon": "Giovanni", "Late": null}, "Events": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Mission Coordination": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Watch Party": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Zoe", "Late": null}, "TXM with Francis": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Pre-production": {"Early": null, "Morning": "Zoe", "Lunch": null, "Afternoon": null, "Late": null}, "Production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Troubleshooting": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Giovanni", "Late": null}, "Planning": {"Early": null, "Morning": "Zoe", "Lunch": null, "Afternoon": "Zoe", "Late": null}, "Agencies": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": "Giovanni"}, "INS Follow-up": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Zoe", "Late": null}}}, {"day": "Tue", "date": "2026-06-23", "weekend": false, "bands": ["Early", "Morning", "Lunch", "Afternoon", "Late"], "status": {"Giovanni": "Working", "Zoe": "Working", "Claudio": "Working"}, "grid": {"MMC Frontpage": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "EC Hotline": {"Early": "Zoe", "Morning": "Claudio", "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Octopus – Daily": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Octopus – Week Ahead": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Events": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Mission Coordination": {"Early": "Zoe", "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Watch Party": {"Early": "Zoe", "Morning": "Giovanni", "Lunch": null, "Afternoon": null, "Late": null}, "TXM with Francis": {"Early": "Zoe", "Morning": "Zoe", "Lunch": null, "Afternoon": null, "Late": null}, "Pre-production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Troubleshooting": {"Early": null, "Morning": "Zoe", "Lunch": null, "Afternoon": "Giovanni", "Late": "Giovanni"}, "Planning": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Agencies": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Giovanni", "Late": "Giovanni"}, "INS Follow-up": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}}}, {"day": "Wed", "date": "2026-06-24", "weekend": false, "bands": ["Early", "Morning", "Lunch", "Afternoon", "Late"], "status": {"Giovanni": "Working", "Zoe": "Working", "Claudio": "Working"}, "grid": {"MMC Frontpage": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "EC Hotline": {"Early": null, "Morning": "Giovanni", "Lunch": null, "Afternoon": null, "Late": null}, "Octopus – Daily": {"Early": null, "Morning": "Giovanni", "Lunch": null, "Afternoon": "Zoe", "Late": "Zoe"}, "Octopus – Week Ahead": {"Early": null, "Morning": "Giovanni", "Lunch": null, "Afternoon": "Zoe", "Late": "Zoe"}, "Events": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Mission Coordination": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Watch Party": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "TXM with Francis": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Pre-production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Troubleshooting": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Planning": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Agencies": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "INS Follow-up": {"Early": null, "Morning": "Zoe", "Lunch": null, "Afternoon": null, "Late": null}}}, {"day": "Thu", "date": "2026-06-25", "weekend": false, "bands": ["Early", "Morning", "Lunch", "Afternoon", "Late"], "status": {"Giovanni": "Working", "Zoe": "Working", "Claudio": "Working"}, "grid": {"MMC Frontpage": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "EC Hotline": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Giovanni", "Late": "Giovanni"}, "Octopus – Daily": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Zoe", "Late": null}, "Octopus – Week Ahead": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Zoe", "Late": null}, "Events": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Claudio", "Late": null}, "Mission Coordination": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Giovanni", "Late": "Giovanni"}, "Watch Party": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "TXM with Francis": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Pre-production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Troubleshooting": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": "Giovanni"}, "Planning": {"Early": null, "Morning": "Zoe", "Lunch": null, "Afternoon": "Giovanni", "Late": null}, "Agencies": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": "Giovanni"}, "INS Follow-up": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": "Zoe", "Late": null}}}, {"day": "Fri", "date": "2026-06-26", "weekend": false, "bands": ["Early", "Morning", "Lunch", "Afternoon", "Late"], "status": {"Giovanni": "Working", "Zoe": "Working", "Claudio": "Working"}, "grid": {"MMC Frontpage": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "EC Hotline": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": null, "Late": null}, "Octopus – Daily": {"Early": null, "Morning": "Giovanni", "Lunch": null, "Afternoon": "Giovanni", "Late": null}, "Octopus – Week Ahead": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": null, "Late": null}, "Events": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": null, "Late": null}, "Mission Coordination": {"Early": null, "Morning": "Giovanni", "Lunch": null, "Afternoon": "Zoe", "Late": "Zoe"}, "Watch Party": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "TXM with Francis": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Pre-production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Production": {"Early": null, "Morning": null, "Lunch": null, "Afternoon": null, "Late": null}, "Troubleshooting": {"Early": null, "Morning": "Claudio", "Lunch": null, "Afternoon": "Zoe", "Late": null}, "Planning": {"Early": null, "Morning": "Zoe", "Lunch": null, "Afternoon": "Giovanni", "Late": null}, "Agencies": {"Early": null, "Morning": null, "Lunch": "Giovanni", "Afternoon": "Giovanni", "Late": "Giovanni"}, "INS Follow-up": {"Early": null, "Morning": "Zoe", "Lunch": null, "Afternoon": null, "Late": null}}}, {"day": "Sat", "date": "2026-06-27", "weekend": true, "bands": ["All day"], "status": {"Giovanni": "Working", "Zoe": "Working", "Claudio": "Working"}, "grid": {"MMC Frontpage": {"All day": null}, "EC Hotline": {"All day": null}, "Octopus – Daily": {"All day": null}, "Octopus – Week Ahead": {"All day": null}, "Events": {"All day": null}, "Mission Coordination": {"All day": null}, "Watch Party": {"All day": null}, "TXM with Francis": {"All day": null}, "Pre-production": {"All day": null}, "Production": {"All day": null}, "Troubleshooting": {"All day": null}, "Planning": {"All day": null}, "Agencies": {"All day": null}, "INS Follow-up": {"All day": null}}}, {"day": "Sun", "date": "2026-06-28", "weekend": true, "bands": ["All day"], "status": {"Giovanni": "Working", "Zoe": "Working", "Claudio": "Working"}, "grid": {"MMC Frontpage": {"All day": null}, "EC Hotline": {"All day": null}, "Octopus – Daily": {"All day": null}, "Octopus – Week Ahead": {"All day": null}, "Events": {"All day": null}, "Mission Coordination": {"All day": "Zoe"}, "Watch Party": {"All day": null}, "TXM with Francis": {"All day": null}, "Pre-production": {"All day": null}, "Production": {"All day": null}, "Troubleshooting": {"All day": null}, "Planning": {"All day": null}, "Agencies": {"All day": null}, "INS Follow-up": {"All day": null}}}]};
+const PEOPLE = DATA.people;
+const COLORS = {Giovanni:"--giovanni",Zoe:"--zoe",Claudio:"--claudio"};
+const FULLDAY = {Mon:"Monday",Tue:"Tuesday",Wed:"Wednesday",Thu:"Thursday",Fri:"Friday",Sat:"Saturday",Sun:"Sunday"};
+const STATUSES = ["OFF","ON MISSION"];
+const cls = s => (s||"").replace(/[^A-Za-z]/g,"");
+const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const initials = s => s.slice(0,1);
+const bandZone = b => "bz-"+cls(b);
+
+function fmtDate(iso,opts){ return new Intl.DateTimeFormat("en-GB",opts).format(new Date(iso+"T12:00:00")); }
+const todayISO = new Date().toISOString().slice(0,10);
+const isToday = d => d.date===todayISO;
+
+let view="day", layout="cards", dayIdx=0;
+(function(){ const i=DATA.days.findIndex(d=>d.date===todayISO); dayIdx = i>=0?i:0; })();
+
+// header week label
+(function(){
+  const d0=DATA.days[0].date, d1=DATA.days[DATA.days.length-1].date;
+  document.getElementById("weekof").textContent =
+    "Week of "+fmtDate(d0,{day:"numeric",month:"short"})+" – "+fmtDate(d1,{day:"numeric",month:"short",year:"numeric"});
+  document.getElementById("foot").innerHTML =
+    "EBS Newsdesk duty roster · unofficial planning aid, for internal team use · generated "+
+    fmtDate(DATA.generatedAt.slice(0,10),{day:"numeric",month:"short"});
+})();
+
+function dayHeader(){
+  const d=DATA.days[dayIdx];
+  const dl=document.getElementById("dl");
+  dl.textContent = FULLDAY[d.day]+" "+fmtDate(d.date,{day:"2-digit",month:"short"});
+  dl.classList.toggle("today",isToday(d));
+  document.getElementById("prev").disabled=dayIdx<=0;
+  document.getElementById("next").disabled=dayIdx>=DATA.days.length-1;
+}
+
+function renderCards(){
+  const d=DATA.days[dayIdx]; const status=d.status||{};
+  let h="";
+  for(const p of PEOPLE){
+    const st=status[p]||"Working"; const away=st!=="Working"; const col=COLORS[p];
+    let body="", total=0;
+    if(away){
+      body=`<div class="pslot"><span class="statusline soft-${cls(st)}">${esc(st)}</span></div>`;
+    } else {
+      for(const band of d.bands){
+        const roles=DATA.roles.filter(r=>d.grid[r][band]===p);
+        total+=roles.length;
+        if(roles.length){
+          body+=`<div class="pslot ${bandZone(band)}"><span class="pslot-band">${esc(band.split(' ')[0])}</span><span class="pslot-roles">${roles.map(r=>`<span class="rtag">${esc(r)}</span>`).join("")}</span></div>`;
+        }
+      }
+      if(!body) body=`<div class="pslot"><span class="pslot-band" style="--bc:var(--faint)">—</span><span style="color:var(--faint);font-style:italic;font-size:12.5px;padding-top:2px">No assignments ${isToday(d)?"today":"this day"}</span></div>`;
+    }
+    const meta = away ? esc(st) : (total+" "+(total===1?"role":"roles"));
+    h+=`<div class="pcard${away?' away':''}"><div class="pcard-h"><span class="pavatar" style="background:var(${col})">${initials(p)}</span><span class="pname namecol-${p}">${esc(p)}</span><span class="pcount">${meta}</span></div>${body}</div>`;
+  }
+  document.getElementById("dayview").innerHTML=h;
+}
+
+function renderTimeline(){
+  const d=DATA.days[dayIdx]; const bands=d.bands; const cols=bands.length;
+  const gc=`repeat(${cols},1fr)`;
+  const active=DATA.roles.filter(r=>bands.some(b=>d.grid[r][b]));
+  let head=`<div class="tlhead"><div></div><div class="tlbands" style="grid-template-columns:${gc}">${bands.map(b=>`<span class="${bandZone(b)}">${esc(b.split(' ')[0])}</span>`).join("")}</div></div>`;
+  let rows="";
+  for(const role of active){
+    let lane=`<div class="tllane" style="grid-template-columns:${gc}">`;
+    for(let i=0;i<cols;i++) lane+=`<div class="gl"></div>`;
+    for(let i=0;i<cols;i++){
+      const who=d.grid[role][bands[i]];
+      if(who){const left=i/cols*100,width=1/cols*100;
+        lane+=`<div class="tlbar bg-${cls(who)} ${bandZone(bands[i])}" style="left:calc(${left}% + 3px);width:calc(${width}% - 6px)">${esc(who)}</div>`;}
+    }
+    lane+=`</div>`;
+    rows+=`<div class="tlrow"><div class="tlrole">${esc(role)}</div>${lane}</div>`;
+  }
+  if(!active.length) rows=`<div class="tlrow"><div class="tlrole" style="color:var(--faint)">Nobody on guard this day</div><div></div></div>`;
+  document.getElementById("dayview").innerHTML=`<div class="tlwrap"><div class="tlgrid">${head}${rows}</div></div>`;
+}
+
+function renderWeek(){
+  const wd=DATA.days;
+  let head=`<thead><tr><th class="rolecell">Role</th>`;
+  for(const d of wd) head+=`<th class="${isToday(d)?'today':''}">${d.day}<span class="dt">${fmtDate(d.date,{day:"2-digit",month:"2-digit"})}</span></th>`;
+  head+=`</tr></thead>`;
+  let body="<tbody>";
+  for(const role of DATA.roles){
+    body+=`<tr><td class="rolecell">${esc(role)}</td>`;
+    for(const d of wd){
+      let chips="";
+      for(const band of d.bands){
+        const who=d.grid[role][band];
+        if(who){const tag=d.weekend?"":`<span class="bandtag">${band[0]}</span> `;
+          chips+=`<span class="chip chip-${cls(who)} ${bandZone(band)}">${tag}${esc(who)}</span>`;}
+      }
+      body+=`<td><div class="cellnames">${chips}</div></td>`;
+    }
+    body+=`</tr>`;
+  }
+  body+="</tbody>";
+  document.getElementById("weekview").innerHTML=`<div class="wkwrap"><table class="week">${head}${body}</table></div>`;
+}
+
+function renderTally(){
+  const count={};PEOPLE.forEach(p=>count[p]=0);
+  for(const d of DATA.days) for(const role of DATA.roles) for(const band of d.bands){const w=d.grid[role][band];if(count[w]!==undefined)count[w]++;}
+  const max=Math.max(1,...Object.values(count));
+  let h=`<div class="tally-h">This week · assignments per person</div>`;
+  for(const p of PEOPLE){const pct=Math.round(count[p]/max*100);h+=`<div class="tally-row"><span class="nm">${p}</span><span class="bar"><span class="bar-fill" style="width:${pct}%;background:var(${COLORS[p]})"></span></span><span class="ct">${count[p]}</span></div>`;}
+  document.getElementById("tally").innerHTML=h;
+}
+
+function renderDay(){ dayHeader(); if(layout==="cards") renderCards(); else renderTimeline(); }
+function setView(v){
+  view=v;
+  document.getElementById("vDay").setAttribute("aria-pressed",v==="day");
+  document.getElementById("vWeek").setAttribute("aria-pressed",v==="week");
+  document.getElementById("dayview").style.display=v==="day"?"":"none";
+  document.getElementById("weekview").style.display=v==="week"?"":"none";
+  document.getElementById("daynav").style.visibility=v==="day"?"visible":"hidden";
+  document.getElementById("subbar").style.display=v==="day"?"flex":"none";
+  if(v==="day") renderDay(); else renderWeek();
+}
+function setLayout(l){
+  layout=l;
+  document.getElementById("lCards").setAttribute("aria-pressed",l==="cards");
+  document.getElementById("lTimeline").setAttribute("aria-pressed",l==="timeline");
+  renderDay();
+}
+document.getElementById("vDay").onclick=()=>setView("day");
+document.getElementById("vWeek").onclick=()=>setView("week");
+document.getElementById("lCards").onclick=()=>setLayout("cards");
+document.getElementById("lTimeline").onclick=()=>setLayout("timeline");
+document.getElementById("pdfBtn").onclick=()=>{
+  setView("week");
+  const pt=document.getElementById("printtitle");
+  pt.textContent = "EBS Newsdesk Roster — " + document.getElementById("weekof").textContent;
+  setTimeout(()=>window.print(), 60);
+};
+document.getElementById("prev").onclick=()=>{if(dayIdx>0){dayIdx--;renderDay();}};
+document.getElementById("next").onclick=()=>{if(dayIdx<DATA.days.length-1){dayIdx++;renderDay();}};
+async function loadLive(){
+  try{
+    const r = await fetch("roster.json?t="+Date.now(), {cache:"no-store"});
+    if(r.ok){ const j = await r.json();
+      // replace DATA contents in place
+      for(const k of Object.keys(DATA)) delete DATA[k];
+      Object.assign(DATA, j);
+      const i=DATA.days.findIndex(d=>d.date===todayISO); dayIdx=i>=0?i:0;
+      // refresh header labels
+      const d0=DATA.days[0].date,d1=DATA.days[DATA.days.length-1].date;
+      document.getElementById("weekof").textContent="Week of "+fmtDate(d0,{day:"numeric",month:"short"})+" – "+fmtDate(d1,{day:"numeric",month:"short",year:"numeric"});
+    }
+  }catch(_){}
+  renderTally(); setView(view);
+}
+renderTally();
+const startView = window.matchMedia("(min-width:760px)").matches ? "week" : "day";
+setView(startView);
+loadLive();
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) loadLive(); });
+</script>
+</body>
+</html>
