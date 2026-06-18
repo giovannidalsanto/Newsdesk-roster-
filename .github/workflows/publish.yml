@@ -1,0 +1,24 @@
+name: Publish roster
+on:
+  push:
+    paths: ["roster.xlsx"]       # runs whenever you upload a new filled sheet
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+      - name: Install reader
+        run: pip install openpyxl
+      - name: Convert Excel to roster.json
+        run: python convert.py roster.xlsx roster.json
+      - name: Commit roster.json
+        run: |
+          git config user.name "roster-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add roster.json
+          git diff --cached --quiet || git commit -m "publish roster"
+          git push
