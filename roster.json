@@ -28,7 +28,7 @@
   "Afternoon",
   "Late"
  ],
- "generatedAt": "2026-06-19T08:52:56+00:00",
+ "generatedAt": "2026-06-19T09:01:20+00:00",
  "days": [
   {
    "day": "Mon",
@@ -92,7 +92,7 @@
     "Watch Party": {
      "Early": null,
      "Morning": null,
-     "Lunch": "Giovanni",
+     "Lunch": null,
      "Afternoon": "Giovanni",
      "Late": null
     },
@@ -525,16 +525,16 @@
     "EC Hotline": {
      "Early": null,
      "Morning": "Giovanni",
-     "Lunch": "Giovanni",
+     "Lunch": null,
      "Afternoon": "Claudio",
      "Late": "Claudio"
     },
     "Octopus – Daily": {
      "Early": null,
-     "Morning": "Giovanni",
-     "Lunch": "Giovanni",
-     "Afternoon": "Giovanni",
-     "Late": "Giovanni"
+     "Morning": "Zoe",
+     "Lunch": null,
+     "Afternoon": "Claudio",
+     "Late": "Claudio"
     },
     "Octopus – Week Ahead": {
      "Early": null,
@@ -545,7 +545,7 @@
     },
     "Events": {
      "Early": null,
-     "Morning": "Giovanni",
+     "Morning": null,
      "Lunch": null,
      "Afternoon": null,
      "Late": "Claudio"
@@ -553,7 +553,7 @@
     "Mission Coordination": {
      "Early": null,
      "Morning": "Giovanni",
-     "Lunch": "Giovanni",
+     "Lunch": null,
      "Afternoon": "Claudio",
      "Late": "Claudio"
     },
@@ -587,8 +587,8 @@
     },
     "Troubleshooting": {
      "Early": null,
-     "Morning": "Zoe",
-     "Lunch": "Giovanni",
+     "Morning": null,
+     "Lunch": null,
      "Afternoon": "Claudio",
      "Late": "Claudio"
     },
@@ -602,7 +602,7 @@
     "Agencies": {
      "Early": null,
      "Morning": "Giovanni",
-     "Lunch": "Giovanni",
+     "Lunch": null,
      "Afternoon": "Giovanni",
      "Late": null
     },
