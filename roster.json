@@ -28,7 +28,7 @@
   "Afternoon",
   "Late"
  ],
- "generatedAt": "2026-06-26T10:00:40+00:00",
+ "generatedAt": "2026-06-26T10:56:49+00:00",
  "days": [
   {
    "day": "Mon",
@@ -194,9 +194,9 @@
     },
     "Events": {
      "Early": null,
-     "Morning": "Giovanni",
+     "Morning": "Zoe",
      "Lunch": null,
-     "Afternoon": "Giovanni",
+     "Afternoon": "Zoe",
      "Late": null
     },
     "Mission Coordination": {
@@ -283,9 +283,9 @@
    "grid": {
     "MMC Frontpage": {
      "Early": null,
-     "Morning": null,
+     "Morning": "Claudio",
      "Lunch": null,
-     "Afternoon": null,
+     "Afternoon": "Claudio",
      "Late": null
     },
     "EC Hotline": {
